@@ -19,7 +19,7 @@ final class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        assignbackground()
         setupLabels()
         [cityNameLabel, temperatureLabel, descriptionLabel, secondDescriptionLabel].forEach {
             view.addSubview($0)
@@ -59,17 +59,19 @@ final class DetailsViewController: UIViewController {
     
     private func setupLabels() {
         
+        
         cityNameLabel.font = .systemFont(ofSize: 40, weight: .semibold)
-        cityNameLabel.textAlignment = NSTextAlignment.center
         
         temperatureLabel.font = .systemFont(ofSize: 60, weight: .medium)
-        temperatureLabel.textAlignment = NSTextAlignment.center
         
         descriptionLabel.font = .systemFont(ofSize: 30, weight: .light)
-        descriptionLabel.textAlignment = NSTextAlignment.center
         
         secondDescriptionLabel.font = .systemFont(ofSize: 15, weight: .thin)
-        secondDescriptionLabel.textAlignment = NSTextAlignment.center
+        
+        [cityNameLabel, temperatureLabel, descriptionLabel, secondDescriptionLabel].forEach {
+            $0.textAlignment = NSTextAlignment.center
+            $0.textColor = .white
+        }
     }
     
     public func configureWithCityEntity(cityEntity: CityEntity) {
@@ -78,5 +80,17 @@ final class DetailsViewController: UIViewController {
         descriptionLabel.text = cityEntity.firstDescription
         secondDescriptionLabel.text = cityEntity.secondDescription
         title = "Weather app"
+    }
+    
+    func assignbackground(){
+           let background = UIImage(named: "night")
+           var imageView : UIImageView!
+           imageView = UIImageView(frame: view.bounds)
+           imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+           imageView.clipsToBounds = true
+           imageView.image = background
+           imageView.center = view.center
+           view.addSubview(imageView)
+           self.view.sendSubviewToBack(imageView)
     }
 }

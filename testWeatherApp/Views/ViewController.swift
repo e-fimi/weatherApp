@@ -30,12 +30,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        assignbackground()
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.cellIdentifier)
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
         
         searchBar.delegate = self
         searchBar.placeholder = "Search city"
@@ -117,6 +118,18 @@ class ViewController: UIViewController {
             self.present(alertVC, animated: true, completion: nil)
         }
         self.tableView.refreshControl?.endRefreshing()
+    }
+    
+    func assignbackground(){
+           let background = UIImage(named: "light")
+           var imageView : UIImageView!
+           imageView = UIImageView(frame: view.bounds)
+           imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+           imageView.clipsToBounds = true
+           imageView.image = background
+           imageView.center = view.center
+           view.addSubview(imageView)
+           self.view.sendSubviewToBack(imageView)
     }
     
     func presentingCoincidenceAlert() {

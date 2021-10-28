@@ -17,7 +17,6 @@ class TableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setup()
     }
     
@@ -30,15 +29,14 @@ class TableViewCell: UITableViewCell {
         titleLabel.font = .systemFont(ofSize: 28, weight: .semibold)
         dateUpdatedLabel.textColor = .darkGray
         temperatureLabel.font = .systemFont(ofSize: 48, weight: .medium)
-        backgroundColor = UIColor.white
         
         contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowRadius = 0.5
         contentView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         contentView.layer.shadowOpacity = 0.8
         contentView.layer.cornerRadius = 8
-        contentView.backgroundColor = UIColor.white
-        
+        contentView.backgroundColor = .clear
+        backgroundColor = .clear
         selectionStyle = .none
         [titleLabel, dateUpdatedLabel, temperatureLabel].forEach {
             contentView.addSubview($0)
