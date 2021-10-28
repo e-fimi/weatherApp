@@ -24,7 +24,7 @@ class ManagerTest: XCTestCase {
             guard let result = try? decoder.decode(CityResponse.self, from: data) else {
                 return
             }
-            XCTAssertEqual("Moscow", result.name)
+            XCTAssertEqual(cityName, result.name)
             XCTAssertEqual(524901, result.id)
         }
         task.resume()

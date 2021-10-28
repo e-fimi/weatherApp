@@ -11,7 +11,7 @@ import CoreData
 final class CoreDataManager {
     
     private let dataBaseName: String = "CityCoreDataModel"
-    private let storeContainer: NSPersistentContainer
+    public let storeContainer: NSPersistentContainer
     private var isReady: Bool = false
     
     private var mainQueueContext: NSManagedObjectContext {
